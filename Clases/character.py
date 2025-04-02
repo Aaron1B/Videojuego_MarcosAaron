@@ -7,14 +7,18 @@ class Character(Entity):
         self.is_alive = True
 
     def move(self, dx, dy):
-        """Move the character by dx and dy."""
-        super().move(dx, dy)
+        """Mueve el personaje por dx y dy."""
+        self.x += dx
+        self.y += dy
 
     def shoot(self):
-        """Shoot a bullet."""
-        pass  # Implementar más adelante
+        """Dispara un proyectil desde la posición actual."""
+        from shot import Shot 
+        return Shot(self.x + 25, self.y, "shot.png")
 
     def collide(self, other):
-        if self.x == other.x and self.y == other.y: # Verifico si el personaje ha chocado con otro
-            return True
-        return False 
+        """Verifica si hay colisión con otro objeto."""
+        return (self.x < other.x + 50 and 
+                self.x + 50 > other.x and 
+                self.y < other.y + 50 and 
+                self.y + 50 > other.y)

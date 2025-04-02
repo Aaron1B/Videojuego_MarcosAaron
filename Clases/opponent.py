@@ -1,5 +1,5 @@
 from character import Character
-from shot import Shot
+
 
 class Opponent(Character):
     def __init__(self,x,y,image):
@@ -10,6 +10,7 @@ class Opponent(Character):
         self.y += 5
 
     def shoot(self):
+        from shot import Shot
         return Shot(self.x, self.y, "down", "shot_enemy.png")
     
     def convert_star(self):

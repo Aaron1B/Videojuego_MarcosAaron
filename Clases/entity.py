@@ -6,10 +6,11 @@ class Entity:
         self.image = image
 
     def move(self, dx, dy):
-        """Move the entity by dx and dy."""
         self.x += dx
         self.y += dy
 
     def draw(self, screen):
-        """Draw the entity on the screen."""
+       if self.image:
         screen.blit(self.image, (self.x, self.y))
+       else:
+          pygame.draw.rect(screen, (255,255,255), (self.x,self.y,50,50))
