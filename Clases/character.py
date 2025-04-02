@@ -15,8 +15,6 @@ class Character(Entity):
         pass  # Implementar más adelante
 
     def collide(self, other):
-        """Handle collision with another entity."""
-        if self.rect.colliderect(other.rect):  # Asumo que vas a usar rects para colisiones
-            self.lives -= 1
-            if self.lives <= 0:
-                self.is_alive = False
+        if self.x == other.x and self.y == other.y: # Verifico si el personaje ha chocado con otro
+            return True
+        return False 
